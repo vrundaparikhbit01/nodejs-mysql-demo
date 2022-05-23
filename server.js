@@ -3,8 +3,18 @@ const bodyParser = require('body-parser');
 const cors = require("cors");
 const app = express();
 const dotenv = require('dotenv');
-
 dotenv.config();
+
+const fs = require('fs');
+var dir = './public/uploads/users/images';
+var dir2 = './public/uploads/users/metadata';
+
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+if (!fs.existsSync(dir2)){
+    fs.mkdirSync(dir2);
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
